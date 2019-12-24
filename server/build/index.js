@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var morgan_1 = __importDefault(require("morgan"));
+var cors_1 = __importDefault(require("cors"));
 var indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 var Server = /** @class */ (function () {
     function Server() {
@@ -18,6 +20,10 @@ var Server = /** @class */ (function () {
         else {
             this.app.set('port', process.env.PORT);
         }
+        this.app.use(morgan_1.default("dev"));
+        this.app.use(cors_1.default());
+        this.app.use(express_1.default.json());
+        this.app.use(express_1.default.urlencoded({ extended: false }));
     };
     Server.prototype.routes = function () {
         this.app.use("/", indexRoutes_1.default);

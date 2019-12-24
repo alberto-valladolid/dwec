@@ -1,5 +1,10 @@
 import express, {Application} from 'express'; 
+import morgan from 'morgan';
+import cors from 'cors';  
+
+
 import indexRoutes from './routes/indexRoutes'; 
+ 
 
 
 class Server {
@@ -12,12 +17,18 @@ class Server {
     }
 
     config():void{
+
         if(typeof process.env.PORT == 'undefined' ){
             this.app.set('port',  3000); 
         }  
         else{
             this.app.set('port',   process.env.PORT); 
         }
+        this.app.use(morgan("dev")); 
+        this.app.use(cors()); 
+        this.app.use(express.json()); 
+        this.app.use(express.urlencoded({extended:false})); 
+
     }
 
     routes():void{
