@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 var Server = /** @class */ (function () {
     function Server() {
         this.app = express_1.default();
@@ -19,6 +20,7 @@ var Server = /** @class */ (function () {
         }
     };
     Server.prototype.routes = function () {
+        this.app.use("/", indexRoutes_1.default);
     };
     Server.prototype.start = function () {
         var _this = this;
