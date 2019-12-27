@@ -3,38 +3,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
-var morgan_1 = __importDefault(require("morgan"));
-var cors_1 = __importDefault(require("cors"));
-var indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
-var Server = /** @class */ (function () {
-    function Server() {
+const express_1 = __importDefault(require("express"));
+const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
+const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
+class Server {
+    constructor() {
         this.app = express_1.default();
         this.config();
         this.routes();
     }
-    Server.prototype.config = function () {
+    config() {
+        //permite automatizar el servidor
         if (typeof process.env.PORT == 'undefined') {
             this.app.set('port', 3000);
         }
         else {
             this.app.set('port', process.env.PORT);
         }
-        this.app.use(morgan_1.default("dev"));
-        this.app.use(cors_1.default());
-        this.app.use(express_1.default.json());
+        this.app.use(morgan_1.default("dev")); //permite  ver los logs de las peticiones api (post, get, put etc) que recibe esta clase. 
+        this.app.use(cors_1.default()); //para manejar las cabeceras de las peticiones
+        this.app.use(express_1.default.json()); //para recibir objetos json de las peticiones cliente
         this.app.use(express_1.default.urlencoded({ extended: false }));
-    };
-    Server.prototype.routes = function () {
+    }
+    routes() {
         this.app.use("/", indexRoutes_1.default);
-    };
-    Server.prototype.start = function () {
-        var _this = this;
-        this.app.listen(this.app.get('port'), function () {
-            console.log('Server iniciado en el puerto ' + _this.app.get('port'));
+    }
+    start() {
+        this.app.listen(this.app.get('port'), () => {
+            console.log('Server iniciado en el puerto ' + this.app.get('port'));
         });
-    };
-    return Server;
-}());
-var server = new Server();
+    }
+}
+const server = new Server();
 server.start();
