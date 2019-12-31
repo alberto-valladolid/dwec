@@ -1,17 +1,17 @@
 import { Router } from 'express'; 
 
+import {indexController} from '../controllers/indexController'; 
+
 class IndexRoutes {
 
     public router: Router = Router(); 
 
     constructor(){
-        this.config(); 
+        this.config();  
     }
 
     config():void{
-        this.router.get('/', function(req,res){
-            res.send("pues funciona y todo"); 
-        } )
+        this.router.get('/', indexController.index )
     }
 }
 

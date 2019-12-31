@@ -4,7 +4,7 @@ import cors from 'cors';
 
 
 import indexRoutes from './routes/indexRoutes'; 
- 
+import teacherTimetableRoutes from './routes/teacherTimetableRoutes'; 
 
 class Server {
     public app : Application; 
@@ -29,11 +29,12 @@ class Server {
         this.app.use(express.json()); //para recibir objetos json de las peticiones cliente
         this.app.use(express.urlencoded({extended:false})); 
 
-    }
+    } 
 
     
     routes():void{
         this.app.use("/",indexRoutes); 
+        this.app.use("/api/horarios", teacherTimetableRoutes); 
         
     } 
 
