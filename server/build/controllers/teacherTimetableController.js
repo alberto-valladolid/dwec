@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 class TeacherTimetableController {
-    index(req, res) {
+    list(req, res) {
         database_1.default.query("DESCRIBE teacher");
-        res.json({ text: 'metodo index the timetableControler' });
+        res.json({ text: 'Listando horarios del user' + req.params.userId });
     }
     createTimetable(req, res) {
         res.json({ text: 'Creando nuevo horario' });

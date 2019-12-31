@@ -4,7 +4,7 @@ import cors from 'cors';
 
 
 import indexRoutes from './routes/indexRoutes'; 
-import teacherTimetableRoutes from './routes/teacherTimetableRoutes'; 
+import teacherTimetableRoutes from './routes/teacherRoutes'; 
 
 class Server {
     public app : Application; 
@@ -34,7 +34,7 @@ class Server {
     
     routes():void{
         this.app.use("/",indexRoutes); 
-        this.app.use("/api/horarios", teacherTimetableRoutes); 
+        this.app.use("/api/teachers", teacherTimetableRoutes); 
         
     } 
 
