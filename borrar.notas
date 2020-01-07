@@ -1,0 +1,26 @@
+comandos a ejecutar en la consola desde la carpeta SERVER: 
+
+PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run build
+PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run dev
+
+min 1:45
+
+{
+	"user_name": "profesor1",
+	"password": "asdfasdf",
+	"email" : "test@test.com",
+	"phone_number" : "654654654",
+	"name" : "rodolfo"
+}
+
+
+
+Dependencias utilziadas: 
+    typescript: lenguaje que añade tipos estáticos y objetos basados en clases. Facilita el desarrollo de aplicaciones de gran envergadura. Su compilador convierte el código typescript en código javascript original ejecutable por el servidor. 
+    "@types/cors": "^2.8.6", // permite al visual studio code comprender el código de cors, autocompletar y  que no muestre error
+    "@types/morgan": "^1.7.37",  // permite al visual studio code comprender el código de morgan, autocompletar y  que no muestre error
+    "D": "^1.0.0",
+    "cors": "^2.8.5", // permite la comunicacion entre varios servidores, en mi aplicacion tendré el servidor principal y el de las peticiones api. //evita tener que ejecutar el comando (tsc) que compila el codigo de src cada vez que se modifica algo del codigo fuente. El código compilado es almacenado en build/
+    "express": "^4.17.1",
+    "morgan": "^1.9.1", //
+    "promise-mysql": "^4.1.1" evita los callbacks que ensucian el código con la dependencia mysql y basa la peticiones con promesas.  
