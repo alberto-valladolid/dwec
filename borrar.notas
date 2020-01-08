@@ -1,5 +1,12 @@
 comandos a ejecutar en la consola desde la carpeta SERVER: 
 
+Entorno limpio: 
+PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install
+PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install -g typescript
+
+
+
+
 PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run build
 PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run dev
 
