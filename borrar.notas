@@ -1,14 +1,29 @@
 comandos a ejecutar en la consola desde la carpeta SERVER: 
 
-Entorno limpio: 
+PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install --save core-js@^3
+
+
+Entorno limpio:
+
+servidor:
+clone
 PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install
 PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install -g typescript
 
-
-
-
 PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run build
 PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run dev
+
+cliente:
+npm install -g @angular/cli
+
+clone 
+cd proyecto npm install
+
+ng build??
+
+
+
+
 
 min 1:45
 
