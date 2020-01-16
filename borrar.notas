@@ -1,17 +1,22 @@
 comandos a ejecutar en la consola desde la carpeta SERVER: 
 
+Comando para actualizar a la ultima version de core-js:
 PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install --save core-js@^3
 
 
-Entorno limpio:
+
+Requisitos: 
+    instalar node y xampp
+
 
 servidor:
-clone
-PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install
-PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install -g typescript
+    clone + cd
 
-PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run build
-PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run dev
+    PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install
+    PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install -g typescript
+
+    PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run build
+    PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm run dev
 
 cliente:
 npm install -g @angular/cli
