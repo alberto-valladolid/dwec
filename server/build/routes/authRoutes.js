@@ -12,6 +12,7 @@ class AuthRoutes {
     }
     config() {
         this.router.post('/login', authController_1.default.login);
+        this.router.get('/me', authController_1.default.me);
     }
 }
 const authRoutes = new AuthRoutes();

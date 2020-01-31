@@ -12,7 +12,7 @@ class AuthRoutes {
 
     config():void{
         this.router.post('/login', authController.login  ) ;  
-
+        this.router.get('/me', authController.me  ) ;  
     }
 }
 

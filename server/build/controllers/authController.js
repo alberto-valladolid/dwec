@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
+const config_1 = __importDefault(require("../config"));
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
@@ -20,8 +21,7 @@ const express = require('express');
 class AuthController {
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const JWT_Secret = 'your_secret_key';
-            var testUser = { username: 'asdf', password: 'asdf' };
+            //var testUser = { username: 'asdf', password: 'asdf'};
             if (req.body) {
                 //console.log("select count(*) from teacher where user_name = '" + req.body.username + "' and pw = '" + req.body.password+ "'" ); 
                 var user = req.body;
@@ -40,9 +40,12 @@ class AuthController {
                     accountType = "admin";
                 }
                 if (accountType == "teacher" || accountType == "student" || accountType == "admin") {
-                    var token = jwt.sign(user, JWT_Secret);
+                    var token = jwt.sign({ id: user.username, accountType: accountType, id2: user.username }, config_1.default.jwtKey, {
+                        expiresIn: 86400 // expires in 24 hours
+                    });
+                    //var token = jwt.sign(user, JWT_Secret);
                     res.status(200).send({
-                        signed_user: user,
+                        //signed_user: user,
                         token: token
                     });
                 }
@@ -58,6 +61,19 @@ class AuthController {
                 });
             }
             //res.json( await pool.query("select * from teacher") + "funciona");
+        });
+    }
+    me(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var token = req.headers['token'];
+            if (!token)
+                return res.status(401).send({ auth: false, message: 'No token provided.' });
+            jwt.verify(token, config_1.default.jwtKey, function (err, decoded) {
+                if (err)
+                    return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+                //console.log(decoded.id); 
+                res.status(200).send(decoded);
+            });
         });
     }
 }
