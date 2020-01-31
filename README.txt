@@ -1,5 +1,7 @@
 Aplicación creada por Alberto Ibáñez Gamarra. 
 
+Este repositorio contiene el código de un servidor api encargado de la autenticación y gestionar las peticiones. 
+
 Módulos / dependencias usados: 
 
     -typescript: lenguaje que añade tipos estáticos y objetos basados en clases. Facilita el desarrollo de aplicaciones de gran envergadura. Su compilador convierte el código typescript en código javascript original ejecutable por el servidor. 
