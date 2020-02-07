@@ -52,7 +52,7 @@ class Server {
                         if(req.url in securedRoutes){
                             var securedRoutes2 : any = securedRoutes
                            
-                            if(accType >= securedRoutes2[req.url][req.method]['lvl']){
+                            if(accType >= securedRoutes2[req.url][req.method]){
                                 console.log(decoded); 
                                 next();
                             }else{

@@ -50,7 +50,7 @@ class Server {
                             accType = 3;
                         if (req.url in securedRoutes_1.default) {
                             var securedRoutes2 = securedRoutes_1.default;
-                            if (accType >= securedRoutes2[req.url][req.method]['lvl']) {
+                            if (accType >= securedRoutes2[req.url][req.method]) {
                                 console.log(decoded);
                                 next();
                             }

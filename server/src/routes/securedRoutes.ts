@@ -6,20 +6,20 @@ export  default {
         
         '/api/auth/login' : 
         {
-            'POST' : { 'lvl' : 1 } , 
+            'POST' : 1 , 
         } , 
 
         '/api/auth/me' : 
         {
-            'POST' : { 'lvl' : 1 } , 
+            'POST' : 1 , 
         } , 
 
         '/api/teachers'  : 
         {
-            'GET' : { 'lvl' : 1 } , 
-            'POST' : { 'lvl' : 3 } , 
-            'DELETE' : { 'lvl' : 3 } , 
-            'PUT' : { 'lvl' : 3 } , 
+            'GET' : 1 , 
+            'POST' : 3 , 
+            'DELETE' : 3 , 
+            'PUT' : 3 , 
         } , 
     
   
