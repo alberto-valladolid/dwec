@@ -63,16 +63,18 @@ class AuthController {
             //res.json( await pool.query("select * from teacher") + "funciona");
         });
     }
+    //delete in the future this method
     me(req, res) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            var token = req.headers['token'];
+            // console.log(req.headers.authorization?.substr(6)); 
+            var token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.substr(6);
             if (!token)
                 return res.status(401).send({ auth: false, message: 'No token provided.' });
             jwt.verify(token, config_1.default.jwtKey, function (err, decoded) {
                 if (err)
                     return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-                //console.log(decoded.id); 
-                res.status(200).send(decoded);
+                res.status(200).send(decoded.accountType);
             });
         });
     }

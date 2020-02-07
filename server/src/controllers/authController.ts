@@ -70,17 +70,20 @@ class AuthController{
 
     }
 
+    //delete in the future this method
     public async me(req : Request,res : Response){
-      var token = req.headers['token'];
+
+      // console.log(req.headers.authorization?.substr(6)); 
+    
+
+      var token = req.headers.authorization?.substr(6);  
       if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
       
       jwt.verify(token, config.jwtKey, function(err: any, decoded: any) {
         if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
         
-
-        //console.log(decoded.id); 
-        res.status(200).send(decoded);
-      });
+        res.status(200).send(decoded.accountType);
+      }); 
 
     }
 
