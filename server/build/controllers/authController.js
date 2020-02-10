@@ -14,10 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 const config_1 = __importDefault(require("../config"));
-const cors = require('cors');
-const bodyParser = require('body-parser');
+// const cors = require('cors');
+// const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const express = require('express');
+// const express = require('express');
 class AuthController {
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -25,28 +25,29 @@ class AuthController {
             if (req.body) {
                 //console.log("select count(*) from teacher where user_name = '" + req.body.username + "' and pw = '" + req.body.password+ "'" ); 
                 var user = req.body;
-                var accountType = "";
+                var accountType = 0;
                 const resultFromTeachersTable = yield database_1.default.query("select count(*) as count from teacher where user_name = '" + req.body.username + "' and pw = '" + req.body.password + "'");
                 const resultFromStudentsTable = yield database_1.default.query("select count(*) as count from student where user_name = '" + req.body.username + "' and pw = '" + req.body.password + "'");
                 const resultFromAdminsTable = yield database_1.default.query("select count(*) as count from admin where user_name = '" + req.body.username + "' and pw = '" + req.body.password + "'");
                 //console.log(resultFromAdminsTable[0].count); 
                 if (resultFromTeachersTable[0].count == 1) {
-                    accountType = "teacher";
+                    accountType = 2;
                 }
                 else if (resultFromStudentsTable[0].count == 1) {
-                    accountType = "student";
+                    accountType = 1;
                 }
                 else if (resultFromAdminsTable[0].count == 1) {
-                    accountType = "admin";
+                    accountType = 3;
                 }
-                if (accountType == "teacher" || accountType == "student" || accountType == "admin") {
+                if (accountType == 1 || accountType == 2 || accountType == 3) {
                     var token = jwt.sign({ id: user.username, accountType: accountType, id2: user.username }, config_1.default.jwtKey, {
                         expiresIn: 86400 // expires in 24 hours
                     });
                     //var token = jwt.sign(user, JWT_Secret);
                     res.status(200).send({
                         //signed_user: user,
-                        token: token
+                        token: token,
+                        accType: accountType
                     });
                 }
                 else {

@@ -44,15 +44,11 @@ class Server {
                 jwt.verify(token, config.jwtKey, function(err: any, decoded: any) {
                     if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
                     else {
-                        var accType : any; 
-                        if (decoded.accountType == "student")   accType = 1 ; 
-                        if (decoded.accountType == "teacher")   accType = 2 ; 
-                        if (decoded.accountType == "admin")   accType = 3 ; 
 
                         if(req.url in securedRoutes){
                             var securedRoutes2 : any = securedRoutes
                            
-                            if(accType >= securedRoutes2[req.url][req.method]){
+                            if(decoded.accountType >= securedRoutes2[req.url][req.method]){
                                 console.log(decoded); 
                                 next();
                             }else{

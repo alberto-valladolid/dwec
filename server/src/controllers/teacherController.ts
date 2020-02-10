@@ -6,7 +6,7 @@ class TeacherController{
 
     public async listATeacher(req : Request,res : Response){
 
-        const teacher =  await pool.query("select * from teacher where id = " + req.params.id);
+        const teacher =  await pool.query("select id, user_name,email,phone_number,name from teacher where id = " + req.params.id);
 
         if(teacher.length > 0 ){
             res.json({text : teacher})
@@ -19,7 +19,7 @@ class TeacherController{
 
     public async listAllTeachers(req : Request,res : Response){
 
-        res.json( await pool.query("select * from teacher"));
+        res.json( await pool.query("select id, user_name,email,phone_number,name from teacher"));
        
     }
 

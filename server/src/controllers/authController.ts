@@ -3,10 +3,10 @@ import pool from '../database';
 import config from '../config'; 
 
 
-const cors = require('cors');
-const bodyParser = require('body-parser');
+// const cors = require('cors');
+// const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const express = require('express');
+// const express = require('express');
 
 class AuthController{
 
@@ -20,7 +20,7 @@ class AuthController{
 
             //console.log("select count(*) from teacher where user_name = '" + req.body.username + "' and pw = '" + req.body.password+ "'" ); 
             var user = req.body;
-            var accountType =""; 
+            var accountType :number = 0; 
 
         
             
@@ -33,15 +33,15 @@ class AuthController{
 
 
             if(resultFromTeachersTable[0].count == 1){
-               accountType = "teacher";
+               accountType = 2;
             }else if(resultFromStudentsTable[0].count == 1){
-               accountType = "student";
+               accountType = 1;
             }else if(resultFromAdminsTable[0].count == 1){ 
-               accountType = "admin";
+               accountType = 3;
             }
           
          
-            if (accountType == "teacher" || accountType == "student" || accountType == "admin" ) {
+            if (accountType == 1 || accountType == 2 || accountType == 3 ) {
 
               var token = jwt.sign({ id: user.username, accountType: accountType, id2:  user.username }, config.jwtKey, {
                 expiresIn: 86400 // expires in 24 hours
@@ -52,7 +52,8 @@ class AuthController{
 
               res.status(200).send({
                 //signed_user: user,
-                token: token
+                token: token,
+                accType: accountType
               });
             } else {
               res.status(403).send({

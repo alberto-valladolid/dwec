@@ -16,7 +16,7 @@ const database_1 = __importDefault(require("../database"));
 class TeacherController {
     listATeacher(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const teacher = yield database_1.default.query("select * from teacher where id = " + req.params.id);
+            const teacher = yield database_1.default.query("select id, user_name,email,phone_number,name from teacher where id = " + req.params.id);
             if (teacher.length > 0) {
                 res.json({ text: teacher });
             }
@@ -27,7 +27,7 @@ class TeacherController {
     }
     listAllTeachers(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json(yield database_1.default.query("select * from teacher"));
+            res.json(yield database_1.default.query("select id, user_name,email,phone_number,name from teacher"));
         });
     }
     createTeacher(req, res) {
