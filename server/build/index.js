@@ -41,15 +41,23 @@ class Server {
                     if (err)
                         return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
                     else {
-                        if (req.url in securedRoutes_1.default) {
+                        var urlRequest = req.url;
+                        //If endpoint ends with a number, remove the number to compare the endpoint with routes in secureRoutes.ts 
+                        if (urlRequest.match(/[0-9]$/)) {
+                            urlRequest = urlRequest.substring(0, urlRequest.lastIndexOf("/"));
+                        }
+                        if (urlRequest in securedRoutes_1.default) {
                             var securedRoutes2 = securedRoutes_1.default;
-                            if (decoded.accountType >= securedRoutes2[req.url][req.method]) {
-                                console.log(decoded);
+                            if (decoded.accountType >= securedRoutes2[urlRequest][req.method]) {
+                                //console.log(decoded); 
                                 next();
                             }
                             else {
                                 return res.status(500).send({ auth: false, message: 'Insufficient permissions' });
                             }
+                        }
+                        else {
+                            return res.status(500).send({ auth: false, message: 'Unknow endpoint' });
                         }
                     }
                 });

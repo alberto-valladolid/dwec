@@ -45,15 +45,25 @@ class Server {
                     if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
                     else {
 
-                        if(req.url in securedRoutes){
+                        var urlRequest = req.url; 
+
+                        //If endpoint ends with a number, remove the number to compare the endpoint with routes in secureRoutes.ts 
+                        if(urlRequest.match(/[0-9]$/)){    
+                            urlRequest = urlRequest.substring(0, urlRequest.lastIndexOf("/"))                          
+                        }
+
+                        if(urlRequest in securedRoutes){
                             var securedRoutes2 : any = securedRoutes
-                           
-                            if(decoded.accountType >= securedRoutes2[req.url][req.method]){
-                                console.log(decoded); 
+           
+                            if(decoded.accountType >= securedRoutes2[urlRequest][req.method]){
+                                //console.log(decoded); 
                                 next();
                             }else{
                                 return res.status(500).send({ auth: false, message: 'Insufficient permissions' });
                             }
+             
+                        }else{
+                            return res.status(500).send({ auth: false, message: 'Unknow endpoint' });
                         }
                        
                     }
@@ -62,13 +72,11 @@ class Server {
 
             }else{
                 next();
-            }
-            
+            }            
             
         })
 
     } 
-
     
     routes():void{
         this.app.use("/",indexRoutes); 
@@ -78,15 +86,12 @@ class Server {
     } 
 
     start():void{
-
         this.app.listen(this.app.get('port'), () =>{
             console.log ('Server iniciado en el puerto '  + this.app.get('port')); 
         }); 
-
     }
 
 }
-
 
 const server = new Server(); 
 server.start(); 
