@@ -18,7 +18,7 @@ class TeacherController {
         return __awaiter(this, void 0, void 0, function* () {
             const teacher = yield database_1.default.query("select id, user_name,email,phone_number,name from teacher where id = " + req.params.id);
             if (teacher.length > 0) {
-                res.json({ text: teacher });
+                res.json(teacher);
             }
             else {
                 res.status(404).json({ text: "El profesor no existe" });
@@ -39,8 +39,9 @@ class TeacherController {
     }
     deleteTeacher(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query("delete from teacher where id= ?", [req.params.id]);
-            res.json({ text: 'Profesor ' + req.params.id + " eliminado" });
+            console.log("asdf");
+            // await pool.query("delete from teacher where id= ?" , [req.params.id]);
+            // res.json({text: 'Profesor ' + req.params.id + " eliminado"});
         });
     }
     updateTeacher(req, res) {
