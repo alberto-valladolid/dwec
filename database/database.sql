@@ -70,3 +70,10 @@ CREATE TABLE requested_class(
     repeat_timestamp TIMESTAMP,
     timestamp TIMESTAMP
 );
+
+
+insert into admin values (1,'admin','admin','admin@gmail.com',66666666,'Roberto',1);
+insert into teacher values (1,'teacher','teacher','teacher@gmail.com',66666666,'Roberto',1);
+insert into student values (1,'student','student','student@gmail.com',66666666,'Alberto',1);
+
+
