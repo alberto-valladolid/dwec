@@ -59,7 +59,7 @@ CREATE TABLE available_class(
     id_day_of_the_week INT(6) REFERENCES days_of_the_week (id),
     description VARCHAR (255),
     class_order INT(3),
-    class_timestamp TIMESTAMP
+    available_timestamp TIMESTAMP
 );
 
 
@@ -68,7 +68,7 @@ CREATE TABLE requested_class(
     id INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_available_class INT(6) REFERENCES available_class (id),    
     repeat_timestamp TIMESTAMP,
-    timestamp TIMESTAMP
+    class_timestamp TIMESTAMP
 );
 
 
