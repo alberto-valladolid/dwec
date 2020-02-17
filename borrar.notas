@@ -1,17 +1,26 @@
-La guia que estoy siguiendo https://code.tutsplus.com/es/tutorials/jwt-authentication-in-angular--cms-32006
-me llego por:  Luego actualizamos la propiedad logIn en la página de inicio como se muestra. 
+Pasos crear entorno: 
+    1-instalar node , xampp, git y visual studio code
+    2-clone de ambos proyectos
+    3-npm install en ambos proyectos
+    4-cliente:
+        npm install -g @angular/cli
+        npm i @angular-devkit/build-angular@0.803.24
+        ng serve
+    
+    5-servidor:
+        npm install -g typescript
+        npm i promise-mysql@3.3.1
+        npm run build -> inicia el servidor api
+        npm run dev -> inicia el modo dev (muestra las peticiones que recibe el servidor api y  posibles errores )
+        
 
+Pasos para levantar la aplicación: 
+    1- Iniciar mysql del xampp
+    2- Comandos (ejecutar en consolas diferentes): 
+        desde C:\Users\Usuario\Desktop\dwec-project\server ejecutar: npm run build
+        desde C:\Users\Usuario\Desktop\dwec-project\server ejecutar:  npm run dev
+        desde C:\Users\Usuario\Desktop\dwec-project\client ejecutar:  ng serve
 
-
-comandos a ejecutar en la consola desde la carpeta SERVER: 
-
-Comando para actualizar a la ultima version de core-js:
-PS C:\Users\Usuario\Desktop\clase\dwec-project\server> npm install --save core-js@^3
-
-
-
-Requisitos: 
-    instalar node y xampp
 
 
 servidor:
