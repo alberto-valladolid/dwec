@@ -20,6 +20,12 @@ Pasos para levantar la aplicación:
         desde C:\Users\Usuario\Desktop\dwec-project\server ejecutar: npm run build
         desde C:\Users\Usuario\Desktop\dwec-project\server ejecutar:  npm run dev
         desde C:\Users\Usuario\Desktop\dwec-project\client ejecutar:  ng serve
+    3- Navegar a localhost:4200 y acceder con las credenciales de los usuarios por defecto
+
+Usuarios por defecto: 
+    User: teacher pw: teacher
+    User: admin pw: admin
+    User: student pw: student
 
 
 
