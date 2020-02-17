@@ -19,7 +19,7 @@ Pasos para levantar la aplicación:
     2- Comandos (ejecutar en consolas diferentes): 
         desde C:\Users\Usuario\Desktop\dwec-project\server ejecutar: npm run build
         desde C:\Users\Usuario\Desktop\dwec-project\server ejecutar:  npm run dev
-        desde C:\Users\Usuario\Desktop\dwec-project\client ejecutar:  ng serve
+        desde C:\Users\Usuario\Desktop\dwec-project\client-dwec-project ejecutar:  ng serve
     3- Navegar a localhost:4200 y acceder con las credenciales de los usuarios por defecto
 
 Usuarios por defecto: 
