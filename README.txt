@@ -1,6 +1,6 @@
 Aplicación creada por Alberto Ibáñez Gamarra. 
 
-Este repositorio contiene el código de un servidor api encargado de la autenticación y gestionar las peticiones. 
+Este repositorio contiene el código de un servidor api encargado de la autenticación y gestionar las peticiones de un proyecto de clase.
 
 Módulos / dependencias usados: 
 
