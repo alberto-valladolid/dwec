@@ -32,9 +32,9 @@ class TeacherController{
     }
 
     public async deleteTeacher(req : Request,res : Response){
-        console.log("asdf");
-        // await pool.query("delete from teacher where id= ?" , [req.params.id]);
-        // res.json({text: 'Profesor ' + req.params.id + " eliminado"});
+     
+        await pool.query("delete from teacher where id= ?" , [req.params.id]);
+        res.json({text: 'Profesor ' + req.params.id + " eliminado"});
 
     }  
 

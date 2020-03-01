@@ -39,9 +39,8 @@ class TeacherController {
     }
     deleteTeacher(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("asdf");
-            // await pool.query("delete from teacher where id= ?" , [req.params.id]);
-            // res.json({text: 'Profesor ' + req.params.id + " eliminado"});
+            yield database_1.default.query("delete from teacher where id= ?", [req.params.id]);
+            res.json({ text: 'Profesor ' + req.params.id + " eliminado" });
         });
     }
     updateTeacher(req, res) {
