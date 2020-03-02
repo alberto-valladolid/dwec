@@ -1,6 +1,6 @@
 Aplicación creada por Alberto Ibáñez Gamarra. 
 
-Este repositorio contiene el código del servidor api que actúa de backend en el proyecto final de la asginatura DWEC (Desarrollo web en entorno cliente). 
+Este repositorio contiene el código de un servidor api securizado que actúa de backend en el proyecto final de la asginatura DWEC (Desarrollo web en entorno cliente). 
 
 Módulos / dependencias usados: 
 
